@@ -9,9 +9,20 @@ spring:
     username: PROJECT
     password: _aA123456
 
+ # 파일 업로드 설정
+  servlet:
+    multipart:
+      maxFileSize: 20MB
+      maxRequestSize: 40MB
+
+file:
+  upload:
+    path: C:/uploads/
+    url: /uploads/
+
 # 로거 설정
 logging:
   level:
     org:
       springframework:
-        jdbc: trace
+        jdbc: debug
