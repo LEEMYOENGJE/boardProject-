@@ -1,5 +1,6 @@
 package project.configs;
 
+import project.commons.interceptors.CommonInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
@@ -11,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import project.commons.interceptors.CommonInterceptor;
+import project.configs.FileUploadConfig;
 
 @Configuration
 @EnableConfigurationProperties(FileUploadConfig.class)
@@ -43,7 +44,9 @@ public class MvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("file:///" + fileUploadConfig.getPath());
     }
 
+    @Bean
     public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
+
         return new HiddenHttpMethodFilter();
     }
 
@@ -55,4 +58,5 @@ public class MvcConfig implements WebMvcConfigurer {
 
         return ms;
     }
+
 }
