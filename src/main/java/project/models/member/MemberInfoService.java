@@ -1,10 +1,10 @@
 package project.models.member;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import project.entities.Member;
 import project.repositories.MemberRepository;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,9 +28,10 @@ public class MemberInfoService implements UserDetailsService {
         List<GrantedAuthority> authorities
                 = Arrays.asList(new SimpleGrantedAuthority(member.getMtype().name()));
 
+
         return MemberInfo.builder()
                 .email(member.getEmail())
-                .password(member.getPassword()) //hash되어 있는 password
+                .password(member.getPassword())
                 .authorities(authorities)
                 .member(member)
                 .build();

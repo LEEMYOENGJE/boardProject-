@@ -4,10 +4,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import project.commons.Utils;
 import project.entities.Member;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import project.models.member.MemberInfo;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -24,7 +25,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         MemberInfo memberInfo = (MemberInfo)authentication.getPrincipal();
         Member member = memberInfo.getMember();
         session.setAttribute("loginMember", member);
-
 
         /*
          * 로그인 성공시 페이지 이동

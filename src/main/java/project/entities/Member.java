@@ -1,13 +1,14 @@
 package project.entities;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import project.commons.constants.MemberType;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
 @Data
 public class Member {
+
     @Id
     private Long userNo;
 
@@ -17,7 +18,7 @@ public class Member {
 
     private String userNm;
 
-    private  String mobile;
+    private String mobile;
 
     private MemberType mtype = MemberType.USER;
 
