@@ -17,5 +17,6 @@ public class MemberUtil {
 
     public Member getMember() {
         return (Member)session.getAttribute("loginMember");
+
     }
 }
