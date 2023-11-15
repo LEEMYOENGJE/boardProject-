@@ -1,23 +1,27 @@
 package project.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Index;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import project.commons.constants.MemberType;
 
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 @Entity
+@NoArgsConstructor @AllArgsConstructor
 @Table(indexes = {
         @Index(name="idx_member_userNm", columnList = "userNm"),
         @Index(name="idx_member_mobile", columnList = "mobile")
 })
 public class Member {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userNo;
 
     private String email;
@@ -30,6 +34,9 @@ public class Member {
 
     private MemberType mtype = MemberType.USER;
 
+    @CreationTimestamp
     private LocalDateTime regDt;
+
+    @UpdateTimestamp
     private LocalDateTime modDt;
 }
