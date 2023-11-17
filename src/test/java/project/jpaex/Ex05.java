@@ -1,5 +1,6 @@
 package project.jpaex;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,10 @@ public class Ex05 {
 
         List<BoardData> items = (List<BoardData>)repository.findAll(boardData.subject.contains("목"));
         items.stream().forEach(System.out::println);
+    }
+
+    @Test
+    void test2() {
+        BooleanBuilder builder = new BooleanBuilder()
     }
 }
