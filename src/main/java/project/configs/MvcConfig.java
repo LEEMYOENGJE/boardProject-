@@ -1,23 +1,23 @@
 package project.configs;
 
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import project.commons.interceptors.CommonInterceptor;
+import project.commons.interceptors.SiteConfigInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import project.configs.FileUploadConfig;
 
 @Configuration
-@EnableJpaAuditing @EnableScheduling
+@EnableJpaAuditing
+@EnableScheduling
 @EnableConfigurationProperties(FileUploadConfig.class)
 public class MvcConfig implements WebMvcConfigurer {
 
@@ -27,9 +27,15 @@ public class MvcConfig implements WebMvcConfigurer {
     @Autowired
     private CommonInterceptor commonInterceptor;
 
+    @Autowired
+    private SiteConfigInterceptor siteConfigInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(commonInterceptor)
+                .addPathPatterns("/**");
+
+        registry.addInterceptor(siteConfigInterceptor)
                 .addPathPatterns("/**");
 
     }
