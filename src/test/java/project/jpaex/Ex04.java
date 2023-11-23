@@ -8,9 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.context.TestPropertySource;
 import project.entities.BoardData;
-import project.repositories.BoardDataRepository;
+import project.repositories.BoardRepository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ import static org.springframework.data.domain.Sort.Order.desc;
 public class Ex04 {
 
     @Autowired
-    private BoardDataRepository repository;
+    private BoardRepository repository;
 
     @BeforeEach
     void init() {

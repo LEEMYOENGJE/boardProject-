@@ -1,13 +1,12 @@
 package project.jpaex;
 
-import com.querydsl.core.types.dsl.BooleanExpression;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import project.entities.BoardData;
 import project.entities.QBoardData;
-import project.repositories.BoardDataRepository;
+import project.repositories.BoardRepository;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
 @TestPropertySource(properties = "spring.profiles.active=test")
 public class Ex05 {
     @Autowired
-    private BoardDataRepository repository;
+    private BoardRepository repository;
 
     @Test
     void test1() {

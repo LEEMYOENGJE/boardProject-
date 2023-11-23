@@ -10,7 +10,7 @@ import project.entities.BoardData;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface BoardDataRepository extends JpaRepository<BoardData, Long>, QuerydslPredicateExecutor<BoardData> {
+public interface BoardRepository extends JpaRepository<BoardData, Long>, QuerydslPredicateExecutor<BoardData> {
 
     List<BoardData> findByCreatedAtBetween(LocalDateTime sdate, LocalDateTime edate, Pageable pageable);
 
