@@ -27,7 +27,7 @@ public class ConfigSaveService {
 
         config.setCode(code);
         config.setValue(json);
-
+        // 저장후 DB에 반영
         repository.saveAndFlush(config);
     }
 }
