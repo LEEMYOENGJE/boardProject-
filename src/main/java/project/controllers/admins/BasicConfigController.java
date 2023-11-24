@@ -1,14 +1,14 @@
 package project.controllers.admins;
 
 import lombok.RequiredArgsConstructor;
+import project.commons.Utils;
+import project.commons.configs.ConfigInfoService;
+import project.commons.configs.ConfigSaveService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import project.commons.Utils;
-import project.commons.configs.ConfigInfoService;
-import project.commons.configs.ConfigSaveService;
 
 @Controller
 @RequestMapping("/admin/config")

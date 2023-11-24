@@ -12,16 +12,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
-@MappedSuperclass
+@MappedSuperclass @Getter @Setter
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Base {
-    @Column(updatable = false)
     @CreatedDate
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(updatable = false)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
-    @Column(insertable = false)
     @LastModifiedDate
+    @Column(insertable = false)
     private LocalDateTime modifiedAt;
 }

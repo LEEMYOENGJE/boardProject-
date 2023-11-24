@@ -7,6 +7,7 @@ import project.entities.FileInfo;
 import project.entities.Member;
 import project.repositories.FileInfoRepository;
 import org.springframework.stereotype.Service;
+import project.repositories.FileInfoRepository;
 
 import java.io.File;
 import java.util.Arrays;

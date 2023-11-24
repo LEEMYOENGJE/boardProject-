@@ -3,20 +3,23 @@ package project.controllers.admins;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+import project.commons.ScriptExceptionProcess;
 import project.commons.menus.Menu;
+import project.models.board.config.BoardConfigSaveService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
 @Controller("adminBoardController")
 @RequestMapping("/admin/board")
 @RequiredArgsConstructor
-public class BoardController {
+public class BoardController implements ScriptExceptionProcess {
 
     private final HttpServletRequest request;
+    private final BoardConfigSaveService saveService;
 
     @GetMapping
     public String list(Model model) {
@@ -42,12 +45,14 @@ public class BoardController {
     @PostMapping("/save")
     public String save(@Valid BoardConfigForm form, Errors errors, Model model) {
 
-        String mode = form.getMode();
+        String mode = Objects.requireNonNullElse(form.getMode(), "add");
         commonProcess(mode, model);
 
         if (errors.hasErrors()) {
             return "admin/board/" + mode;
         }
+
+        saveService.save(form);
 
         return "redirect:/admin/board";
     }

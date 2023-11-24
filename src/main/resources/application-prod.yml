@@ -2,10 +2,6 @@ server:
   port: 3000
 
 spring:
-  # 프로필 설정
-  profiles:
-    active: dev
-
   # 데이터베이스 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
@@ -43,7 +39,7 @@ spring:
 
 file:
   upload:
-    path: /home/team/uploads
+    path: /home/team/uploads/
     url: /uploads/
 
 # 로거 설정

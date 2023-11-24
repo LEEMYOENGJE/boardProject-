@@ -12,16 +12,16 @@ import project.commons.constants.BoardAuthority;
 @NoArgsConstructor @AllArgsConstructor
 public class Board extends BaseMember {
     @Id
-    @Column(length = 30)
+    @Column(length=30)
     private String bId;
 
-    @Column(length = 60, nullable = false)
+    @Column(length=60, nullable = false)
     private String bName;
 
     private boolean active;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 10, nullable = false)
+    @Column(length=10, nullable = false)
     private BoardAuthority authority = BoardAuthority.ALL;
 
     @Lob

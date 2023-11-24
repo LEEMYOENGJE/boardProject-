@@ -1,9 +1,9 @@
 package project.commons.configs;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import project.entities.Configs;
 import project.repositories.ConfigsRepository;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

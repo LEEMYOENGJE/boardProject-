@@ -18,7 +18,7 @@ public class BoardConfigForm {
     @NotBlank(message = "게시판 이름을 입력하세요.")
     private String bName;
 
-    private  boolean active;
+    private boolean active;
 
     private String authority = "ALL";
 

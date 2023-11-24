@@ -1,10 +1,10 @@
 package project.configs;
 
+import project.models.member.MemberInfo;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-import project.models.member.MemberInfo;
 
 import java.util.Optional;
 
@@ -14,14 +14,11 @@ public class AuditorAwareImpl implements AuditorAware<String> {
     public Optional<String> getCurrentAuditor() {
 
         String email = null;
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        //Object principal = auth.getPrincipal(); // 비회원 - String(문자열) : anonymousUser, 회원 - UserDetails 구현 객체
         if (auth != null && auth.getPrincipal() instanceof MemberInfo) {
-            MemberInfo member = (MemberInfo)auth.getPrincipal();
-            email = member.getEmail();
+            MemberInfo memberInfo = (MemberInfo)auth.getPrincipal();
+            email = memberInfo.getEmail();
         }
-
 
         return Optional.ofNullable(email);
     }

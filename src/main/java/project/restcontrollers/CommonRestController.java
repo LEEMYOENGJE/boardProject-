@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import project.commons.exceptions.CommonsException;
+import project.commons.exceptions.CommonException;
 import project.commons.rest.JSONData;
 
 @RestControllerAdvice("org.project.restcontrollers")
@@ -14,8 +14,8 @@ public class CommonRestController {
     public ResponseEntity<JSONData<Object>> errorHandler(Exception e) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 
-        if (e instanceof CommonsException) {
-            CommonsException commonsException = (CommonsException) e;
+        if (e instanceof CommonException) {
+            CommonException commonsException = (CommonException) e;
             status = commonsException.getStatus();
         }
 
